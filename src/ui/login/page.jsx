@@ -1,6 +1,5 @@
-"use client";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import {
@@ -24,7 +23,7 @@ export default function LoginForm() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [showContent, setShowContent] = useState(false);
-  const router = useRouter();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setTimeout(() => setShowContent(true), 300);
@@ -44,7 +43,7 @@ export default function LoginForm() {
     setTimeout(() => {
       if (values.email === "uriel@gmail.com" && values.password === "pumas") {
         setMessage("Inicio de sesión exitoso ✅");
-        setTimeout(() => router.push("./carros"), 1000);
+        setTimeout(() => navigate("/carros"), 1000);
       } else {
         setMessage("❌ Datos Incorrectos");
       }
@@ -56,7 +55,7 @@ export default function LoginForm() {
     <Formik initialValues={{ email: "", password: "" }} validationSchema={validationSchema} onSubmit={handleSubmit}>
       {({ errors, touched }) => (
         <Form>
-          <Box sx={{ display: "flex", height: "100vh" }}>
+          <Box sx={{ display: "flex", height: "100vh", width: "100vw", margin: 0, padding: 0 }}>
             {/* Formulario */}
             <Paper
               elevation={6}
@@ -130,11 +129,12 @@ export default function LoginForm() {
             {/* Imagen de fondo */}
             <Box
               sx={{
-                flex: 1,
+                width: "60%",
                 backgroundImage: "url(https://s0.smartresize.com/wallpaper/678/394/HD-wallpaper-cars-pursuit-road-forest.jpg)",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 position: "relative",
+                height: "100vh",
               }}
             >
               <Box sx={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", backgroundColor: "rgba(0, 0, 0, 0.5)" }} />

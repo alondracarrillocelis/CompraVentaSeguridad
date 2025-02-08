@@ -206,10 +206,10 @@ export default function CarList() {
   const isSelected = (id) => selected.indexOf(id) !== -1;
 
   return (
-    <div style={{ backgroundColor: "#e7e7e7", minHeight: "100vh", padding: "20px" }}>
+    <div style={{ backgroundColor: "#e7e7e7", minHeight: "100vh", padding: "20px", margin: 0 }}>
       <TableContainer
         component={Paper}
-        sx={{ maxWidth: "90%", mx: "auto", mt: 5, p: 2, borderRadius: "16px" }}
+        sx={{ maxWidth: "90%", mx: "auto", mt: 5, p: 2, borderRadius: "16px", height: "calc(100vh - 100px)" }}
       >
         <Toolbar>
           <Typography variant="h6" sx={{ flex: "1 1 100%" }}>
